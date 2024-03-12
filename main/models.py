@@ -6,24 +6,26 @@ class Category(BaseModel):
     title = models.CharField(max_length=255)
 
     class Meta:
-        verbose_name_plural = 'Categories'
+        verbose_name_plural = "Categories"
 
     def __str__(self):
         return self.title
-    
+
+
 class SubCategory(BaseModel):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     title = models.CharField(max_length=255)
 
     class Meta:
-        verbose_name_plural = 'SubCategories'
+        verbose_name_plural = "SubCategories"
 
     def __str__(self):
         return self.title
 
+
 class ScoreBoard(BaseModel):
-    subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE, related_name='scoreboard_subcategory')
+    subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE, related_name="scoreboard_subcategory")
 
     title = models.CharField(max_length=255)
 
@@ -36,4 +38,3 @@ class ScoreBoard(BaseModel):
 
     def __str__(self):
         return self.title
-
